@@ -104,7 +104,8 @@ static const char *termcmd[] = { "urxvt", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = roficmd } },
-	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,             		XK_Escape, spawn,          SHCMD("sh ~/.config/rofi/powermenu.sh") },
  	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_plus,   incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
