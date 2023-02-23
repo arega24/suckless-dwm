@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;       	/* border pixel of windows */
+static const unsigned int borderpx  = 0;       	/* border pixel of windows */
 static const unsigned int gappih    = 6;       	/* horiz inner gap between windows (used to set gaps in column layout)*/
 static const unsigned int gappiv    = 6;       	/* vert inner gap between windows */
 static const unsigned int gappoh    = 6;       	/* horiz outer gap between windows and screen edge */
@@ -62,12 +62,12 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     	arrange function */
 	{ "MS",      	tile },    /* first entry is default */
-	{ "BotS",      	bstack },
 	{ "CentM",      centeredmaster },
-	{ "Grid",      	grid },
-	{ "nrGrid",      	nrowgrid },
-	{ "BotHS",      bstackhoriz },
 	{ "Float",      NULL },    /* no layout function means floating behavior */
+	{ "BotS",      	bstack },
+	{ "Grid",      	grid },
+	{ "nrGrid",     nrowgrid },
+	{ "BotHS",      bstackhoriz },
 //	{ "CentFM",     centeredfloatingmaster },
 //	{ "Mon",      	monocle },
 
@@ -98,15 +98,23 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
-static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[] = { "urxvt", NULL };
 
+// xev is a utility that can name the keys as you press them
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          {.v = roficmd } },
 	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,             		XK_Escape, spawn,          SHCMD("sh ~/.config/rofi/powermenu.sh") },
- 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_space,  spawn,          SHCMD("rofi -show drun") },
+	{ MODKEY,                       XK_c,      spawn,          SHCMD("rofi -show calc -no-show-match -no-sort -display-calc 'Calc: '") },
+	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.config/scripts/rofi-scripts-script.sh") },
+	{ MODKEY,             		XK_Escape, spawn,          SHCMD("sudo ~/.config/scripts/rofi-powermenu.sh") },
+	{ MODKEY,             		XK_m,      spawn,          SHCMD("~/.config/scripts/rofi-mixer.sh") },
+	{ MODKEY,             		XK_w, 	   spawn,          SHCMD("sxiv -t ~/Imagens/Unsplash_Wallpapers/*") },
+	{ MODKEY,             		XK_p, 	   spawn,          SHCMD("flameshot gui") },
+	{ MODKEY|Mod1Mask,              XK_b, 	   spawn,          SHCMD("flatpak run io.gitlab.librewolf-community") },
+	{ MODKEY|Mod1Mask,              XK_l, 	   spawn,          SHCMD("flatpak run com.logseq.Logseq") },
+	{ MODKEY|Mod1Mask,              XK_k, 	   spawn,          SHCMD("keepassxc") },
+ 	{ MODKEY,                       XK_b,      togglebar,      {0} },	
 	{ MODKEY,                       XK_plus,   incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
@@ -115,19 +123,19 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,      setsmfact,      {.f = -0.05} },
 	{ MODKEY,                       XK_z, 	   zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,             			XK_q,      killclient,     {0} },
-	{ ControlMask,           		XK_1,      setlayout,      {.v = &layouts[0]} },
-	{ ControlMask,           		XK_2,      setlayout,      {.v = &layouts[1]} },
-	{ ControlMask,           		XK_3,      setlayout,      {.v = &layouts[2]} },
-	{ ControlMask,           		XK_4,      setlayout,      {.v = &layouts[3]} },
-	{ ControlMask,           		XK_5,      setlayout,      {.v = &layouts[4]} },
-	{ ControlMask,          		XK_6,      setlayout,      {.v = &layouts[5]} },
-	{ ControlMask,          		XK_7,      setlayout,      {.v = &layouts[6]} },
-//	{ ControlMask,           		XK_8,      setlayout,      {.v = &layouts[7]} },
-//	{ ControlMask,           		XK_9,      setlayout,      {.v = &layouts[8]} },
-//	{ ControlMask,           		XK_space,  setlayout,      {0} },
-	{ MODKEY,             			XK_s,  	   togglefloating, {0} },
-	{ MODKEY,             			XK_f,      togglefullscr,  {0} },
+	{ MODKEY,             		XK_q,      killclient,     {0} },
+	{ ControlMask,           	XK_1,      setlayout,      {.v = &layouts[0]} },
+	{ ControlMask,           	XK_2,      setlayout,      {.v = &layouts[1]} },
+	{ ControlMask,           	XK_3,      setlayout,      {.v = &layouts[2]} },
+	{ ControlMask,           	XK_4,      setlayout,      {.v = &layouts[3]} },
+	{ ControlMask,           	XK_5,      setlayout,      {.v = &layouts[4]} },
+	{ ControlMask,          	XK_6,      setlayout,      {.v = &layouts[5]} },
+	{ ControlMask,          	XK_7,      setlayout,      {.v = &layouts[6]} },
+//	{ ControlMask,           	XK_8,      setlayout,      {.v = &layouts[7]} },
+//	{ ControlMask,              	XK_9,      setlayout,      {.v = &layouts[8]} },
+//	{ ControlMask,           	XK_space,  setlayout,      {0} },
+	{ MODKEY,             		XK_s,  	   togglefloating, {0} },
+	{ MODKEY,             		XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h" } },
 	{ MODKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h" } },
 	{ MODKEY,                       XK_Right,  moveresize,     {.v = "25x 0y 0w 0h" } },
@@ -151,6 +159,14 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+	{ MODKEY,       	        XK_Next,   spawn,          SHCMD("brillo -q -u 150000 -A 5") },
+	{ MODKEY,       		XK_Prior,  spawn,          SHCMD("brillo -q -u 150000 -U 5") },
+	{ ControlMask,       	    	XK_Prior,  spawn,          SHCMD("pamixer -u -i 5") },
+	{ ControlMask,       		XK_Next,   spawn,          SHCMD("pamixer -u -d 5") },
+	{ ControlMask,       	    	XK_m,      spawn,          SHCMD("pamixer -t") },
+	{ ControlMask,       	    	XK_Down,   spawn,          SHCMD("playerctl play-pause") },
+	{ ControlMask,       	    	XK_Right,  spawn,          SHCMD("playerctl next") },
+	{ ControlMask,       	    	XK_Left,   spawn,          SHCMD("playerctl previous") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -162,7 +178,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
-	{ MODKEY|ShiftMask,             XK_BackSpace,      quit,   {0} },
+	{ MODKEY|ShiftMask,		XK_BackSpace,      quit,   {0} },
 };
 
 /* button definitions */
@@ -182,3 +198,80 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
+void
+setlayoutex(const Arg *arg)
+{
+	setlayout(&((Arg) { .v = &layouts[arg->i] }));
+}
+
+void
+viewex(const Arg *arg)
+{
+	view(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+viewall(const Arg *arg)
+{
+	view(&((Arg){.ui = ~0}));
+}
+
+void
+toggleviewex(const Arg *arg)
+{
+	toggleview(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+tagex(const Arg *arg)
+{
+	tag(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+toggletagex(const Arg *arg)
+{
+	toggletag(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+tagall(const Arg *arg)
+{
+	tag(&((Arg){.ui = ~0}));
+}
+
+void
+reloadxrdb(const Arg *arg)
+{
+	xrdb(NULL);
+}
+
+/* signal definitions */
+/* signum must be greater than 0 */
+/* trigger signals using `xsetroot -name "fsignal:<signame> [<type> <value>]"` */
+static Signal signals[] = {
+	/* signum           function */
+	{ "focusstack",     focusstack },
+	{ "setmfact",       setmfact },
+	{ "togglebar",      togglebar },
+	{ "incnmaster",     incnmaster },
+	{ "togglefloating", togglefloating },
+	{ "focusmon",       focusmon },
+	{ "tagmon",         tagmon },
+	{ "zoom",           zoom },
+	{ "view",           view },
+	{ "viewall",        viewall },
+	{ "viewex",         viewex },
+	{ "toggleview",     view },
+	{ "toggleviewex",   toggleviewex },
+	{ "tag",            tag },
+	{ "tagall",         tagall },
+	{ "tagex",          tagex },
+	{ "toggletag",      tag },
+	{ "toggletagex",    toggletagex },
+	{ "killclient",     killclient },
+	{ "quit",           quit },
+	{ "setlayout",      setlayout },
+	{ "setlayoutex",    setlayoutex },
+	{ "reloadxrdb",	    reloadxrdb },
+};

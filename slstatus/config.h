@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 1000;
+const unsigned int interval = 200;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -77,9 +77,10 @@ static const struct arg args[] = {
 //	{ disk_used, 		"DISK %s ",		"//" },
 //	{ disk_total, 		"/ %s | ",		"//" },
 
-//	{ temp, 		"%s | ",		"" }, // https://github.com/polybar/polybar/wiki/Module:-temperature
+//	{ temp, 		"TEMP %s | ",		"/sys/class/thermal/thermal_zone1" }, // https://github.com/polybar/polybar/wiki/Module:-temperature
 
-//	{ vol_perc,		"VOL %s | ",		"" },
+//	{ vol_perc,		"VOL %s | ",		"/dev/mixer" },
+ 	{ run_command, 		"VOL %s | ", 		"pamixer --get-volume-human" },
 
 //	{ battery_state, 	"%s ", 			"BAT0" },
 //	{ battery_perc,  	"%s%% ", 		"BAT0" },
