@@ -65,11 +65,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function 		format          	argument */
-	{ netspeed_tx, 		"%s U/ ", 		"enp4s0"}, // (void)$ ip link / (other) $ ifconfig
-	{ netspeed_rx, 		"%s D | ", 		"enp4s0"}, // (void)$ ip link / (other) $ ifconfig
+	{ netspeed_tx, 		"%s U/ ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig
+	{ netspeed_rx, 		"%s D | ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig
 
-//	{ wifi_essid, 		"%s - ", 		"enp4s0"}, // (void)$ ip link / (other) $ ifconfig	
-//	{ wifi_perc, 		"%s%% | ", 		"enp4s0"}, // (void)$ ip link / (other) $ ifconfig
+	{ wifi_essid, 		"%s - ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig	
+	{ wifi_perc, 		"%s%% | ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig
 
 	{ cpu_perc, 		"CPU %s%% | ",		NULL },
 //	{ ram_perc,		"RAM %s%% | ",		NULL },
@@ -77,14 +77,14 @@ static const struct arg args[] = {
 //	{ disk_used, 		"DISK %s ",		"//" },
 //	{ disk_total, 		"/ %s | ",		"//" },
 
-//	{ temp, 		"TEMP %s | ",		"/sys/class/thermal/thermal_zone1" }, // https://github.com/polybar/polybar/wiki/Module:-temperature
+	{ temp, 		"TEMP %sºC | ",		"/sys/class/thermal/thermal_zone0/temp" }, // https://github.com/polybar/polybar/wiki/Module:-temperature
 
 //	{ vol_perc,		"VOL %s | ",		"/dev/mixer" },
  	{ run_command, 		"VOL %s | ", 		"pamixer --get-volume-human" },
 
-//	{ battery_state, 	"%s ", 			"BAT0" },
-//	{ battery_perc,  	"%s%% ", 		"BAT0" },
-//	{ battery_remaining, 	"%s ", 			"BAT0" },
+//	{ battery_state, 	"%s ", 			"BAT1" }, // see bat name in /sys/class/power_supply/BAT1
+	{ battery_perc,  	"BAT %s%%", 		"BAT1" },
+	{ battery_remaining, 	" / %s", 		"BAT1" },
 
-	{ datetime, 		"%s ",			"%a,%d-%b-%Y | %T "  },
+	{ datetime, 		" | %s ",		"%a,%d-%b-%Y | %T "  },
 };
