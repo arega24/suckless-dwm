@@ -171,6 +171,7 @@ static const Key keys[] = {
 	{ 0,				0x1008ff03,spawn,          SHCMD("sudo brillo -q -u 150000 -U 5") },
 	{ 0,				0x1008ff13,spawn,          SHCMD("pamixer -u -i 5") },
 	{ 0,				0x1008ff11,spawn,          SHCMD("pamixer -u -d 5") },
+	{ 0,				0x1008ff12,spawn,          SHCMD("pamixer -t") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
