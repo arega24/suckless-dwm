@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 200;
+const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -65,11 +65,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function 		format          	argument */
-	{ netspeed_tx, 		"%s U/ ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig
-	{ netspeed_rx, 		"%s D | ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig
+	{ netspeed_tx, 		"%s U/ ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig
+	{ netspeed_rx, 		"%s D | ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig
 
-	{ wifi_essid, 		"%s - ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig	
-	{ wifi_perc, 		"%s%% | ", 		"wlan0"}, // (void)$ ip link / (other) $ ifconfig
+	{ wifi_essid, 		"%s - ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig	
+	{ wifi_perc, 		"%s%% | ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig
 
 	{ cpu_perc, 		"CPU %s%% | ",		NULL },
 //	{ ram_perc,		"RAM %s%% | ",		NULL },

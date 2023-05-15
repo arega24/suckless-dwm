@@ -160,7 +160,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
-	{ MODKEY,       	        XK_Prior,  spawn,          SHCMD("sudo brillo -q -u 150000 -A 5") },
+	{ MODKEY,       	        XK_Prior,  spawn,          SHCMD("sudo brillo -q -u 150000 -A 5") }, // add /bin/brillo to sudoers NOPASSWD
 	{ MODKEY,       		XK_Next,   spawn,          SHCMD("sudo brillo -q -u 150000 -U 5") },
 	{ ControlMask,       	    	XK_Prior,  spawn,          SHCMD("pamixer -u -i 5") },
 	{ ControlMask,       		XK_Next,   spawn,          SHCMD("pamixer -u -d 5") },
@@ -173,6 +173,8 @@ static const Key keys[] = {
 	{ 0,				0x1008ff13,spawn,          SHCMD("pamixer -u -i 5") },
 	{ 0,				0x1008ff11,spawn,          SHCMD("pamixer -u -d 5") },
 	{ 0,				0x1008ff12,spawn,          SHCMD("pamixer -t") },
+	{ 0,				XK_backslash,spawn,	   SHCMD("xrandr --output eDP --primary --mode 1920x1080 --rate 60 --rotate normal") },
+	{ ShiftMask,			XK_backslash,spawn,        SHCMD("xrandr --output eDP --primary --mode 1920x1080 --rate 60 --rotate inverted") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
