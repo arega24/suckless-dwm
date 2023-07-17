@@ -65,11 +65,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function 		format          	argument */
-	{ netspeed_tx, 		"%s U/ ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig
-	{ netspeed_rx, 		"%s D | ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig
+	{ netspeed_tx, 		"%s U/ ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig / or $ ip link
+	{ netspeed_rx, 		"%s D | ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig / or $ ip link
 
-	{ wifi_essid, 		"%s - ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig	
-	{ wifi_perc, 		"%s%% | ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig
+	{ wifi_essid, 		"%s - ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig / or $ ip link
+	{ wifi_perc, 		"%s%% | ", 		"wlp1s0"}, // (void)$ ip link / (other) $ ifconfig / or $ ip link
 
 	{ cpu_perc, 		"CPU %s%% | ",		NULL },
 //	{ ram_perc,		"RAM %s%% | ",		NULL },
