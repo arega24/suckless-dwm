@@ -113,7 +113,7 @@ static const Key keys[] = {
 	{ MODKEY,             		XK_p, 	   spawn,          SHCMD("flameshot gui") },
 	{ 0,             		0xff61,     spawn,          SHCMD("flameshot gui") },
 	{ MODKEY|Mod1Mask,              XK_b, 	   spawn,          SHCMD("librewolf") },
-	{ MODKEY|Mod1Mask,              XK_l, 	   spawn,          SHCMD("flatpak run com.logseq.Logseq") },
+	{ MODKEY|Mod1Mask,              XK_l, 	   spawn,          SHCMD("logseq") },
 	{ MODKEY|Mod1Mask,              XK_k, 	   spawn,          SHCMD("keepassxc") },
  	{ MODKEY,                       XK_b,      togglebar,      {0} },	
 	{ MODKEY,                       XK_plus,   incnmaster,     {.i = +1 } },
