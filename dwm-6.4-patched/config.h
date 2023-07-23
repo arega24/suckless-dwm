@@ -173,8 +173,8 @@ static const Key keys[] = {
 	{ 0,				0x1008ff13,spawn,          SHCMD("pamixer -u -i 2") },
 	{ 0,				0x1008ff11,spawn,          SHCMD("pamixer -u -d 2") },
 	{ 0,				0x1008ff12,spawn,          SHCMD("pamixer -t") },
-	{ 0,				XK_backslash,spawn,	   SHCMD("xrandr --output eDP --primary --mode 1920x1080 --rate 60 --rotate normal") },
-	{ ShiftMask,			XK_backslash,spawn,        SHCMD("xrandr --output eDP --primary --mode 1920x1080 --rate 60 --rotate inverted") },
+	{ ShiftMask,			0x1008ff42,spawn,	   SHCMD("xrandr --output eDP --primary --mode 1920x1080 --rate 60 --rotate normal") },
+	{ 0,				0x1008ff42,spawn,        SHCMD("xrandr --output eDP --primary --mode 1920x1080 --rate 60 --rotate inverted") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
