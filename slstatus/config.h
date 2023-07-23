@@ -84,7 +84,7 @@ static const struct arg args[] = {
 
 //	{ battery_state, 	"%s ", 			"BAT1" }, // see bat name in /sys/class/power_supply/BAT1
 	{ battery_perc,  	"BAT %s%%", 		"BAT1" },
-	{ battery_remaining, 	" / %s", 		"BAT1" },
+	{ battery_remaining, 	" / %s | ", 		"BAT1" },
 
-	{ datetime, 		" | %s ",		"%a,%d-%b-%Y | %T "  },
+	{ datetime, 		"%s ",		"%a,%d-%b-%Y | %T "  },
 };
