@@ -16,21 +16,22 @@ static const int vertpad            = 6;       	/* vertical padding of bar */
 static const int sidepad            = 6;       	/* horizontal padding of bar */
 static const char *fonts[]          = { "JetBrainsMono:size=10" };
 static const char dmenufont[]       = "JetBrainsMono:size=10";
-/*
-static char normbgcolor[]           = "#555555";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee"; 
-static char selbordercolor[]        = "#005577"; 
-static char selbgcolor[]            = "#005577"; 
+
+static char normbgcolor[]           = "#533A22";
+static char normbordercolor[]       = "#674F35";
+static char normfgcolor[]           = "#D2BCA3";
+static char selfgcolor[]            = "#BBA48C"; 
+static char selbordercolor[]        = "#674F35"; 
+static char selbgcolor[]            = "#533A22"; 
 static char *colors[][3] = { 
 //	                 fg           bg           border   
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor }, 
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
-*/
 
+/*
 #include "/home/arega/.cache/wal/colors-wal-dwm-costom.h"
 };
+*/
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -98,7 +99,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
-static const char *termcmd[] = { "urxvt", NULL };
+static const char *termcmd[] = { "alacritty", NULL };
 
 // xev is a utility that can name the keys as you press them
 static const Key keys[] = {
