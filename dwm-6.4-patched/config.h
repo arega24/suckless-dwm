@@ -17,6 +17,7 @@ static const int sidepad            = 6;       	/* horizontal padding of bar */
 static const char *fonts[]          = { "JetBrainsMono:size=10" };
 static const char dmenufont[]       = "JetBrainsMono:size=10";
 
+/*
 static char normbgcolor[]           = "#533A22";
 static char normbordercolor[]       = "#674F35";
 static char normfgcolor[]           = "#D2BCA3";
@@ -27,11 +28,11 @@ static char *colors[][3] = {
 //	                 fg           bg           border   
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor }, 
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+*/
 
-/*
 #include "/home/arega/.cache/wal/colors-wal-dwm-costom.h"
 };
-*/
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
